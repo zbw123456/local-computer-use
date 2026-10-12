@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Computer Use · 本地电脑助手</title>
+  <link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/" aria-label="Local Computer Use 首页"><span class="mark">⌘</span><span>Local Computer Use<small>你的电脑，你来掌控</small></span></a><div class="topmeta"><span class="dot"></span><span id="mode">正在连接</span><span class="version">v0.1</span></div></header>
+  <main>
+    <div class="intro"><div><span class="eyebrow">A LITTLE HELP, RIGHT HERE.</span><h1>让电脑操作，变得可见。</h1><p>描述目标，检查下一步，让助手替你完成窗口里的操作。</p></div><span class="local-badge">↳ 运行于本机</span></div>
+    <div id="notice" role="alert" hidden></div>
+    <section class="workspace">
+      <aside class="sidebar">
+        <section class="card task-card"><div class="section-heading"><span class="number">01</span><h2>安排一个任务</h2></div>
+          <label for="window">操作哪个窗口</label><div class="select-row"><select id="window"><option value="">正在读取窗口…</option></select><button id="refresh" class="icon-button" aria-label="刷新窗口" title="刷新窗口">↻</button></div>
+          <button id="observe" class="text-button">查看窗口和控件 ↗</button>
+          <label for="task">你想完成什么</label><textarea id="task" rows="5" maxlength="4000" placeholder="例如：在备忘录中写下今天的三件待办事项。"></textarea>
+          <p class="hint" id="task-hint">每一步先预览，批准后执行。</p>
+          <div class="button-row"><button id="start" class="primary">开始任务 <span>→</span></button><button id="stop" class="stop" disabled>停止</button></div>
+        </section>
+        <section class="card setup-card"><div class="section-heading"><span class="number">02</span><h2>连接状态</h2><button id="check" class="icon-button" aria-label="检查连接状态">↻</button></div>
+          <dl class="checks"><div><dt>辅助功能</dt><dd id="ax-check">检查中</dd></div><div><dt>窗口截图</dt><dd id="screen-check">检查中</dd></div><div><dt>模型</dt><dd id="model-check">—</dd></div></dl>
+          <button id="permissions" class="secondary full">申请 macOS 权限</button>
+          <p class="hint" id="privacy">模型会接收所选窗口的截图与控件文本。请先关闭敏感内容。</p>
+        </section>
+        <div class="sidebar-foot"><span>◇</span><p>仅控制所选窗口<br>操作记录保存在本机</p></div>
+      </aside>
+      <div class="main-column">
+        <section class="card viewer-card"><div class="viewer-header"><div class="tabs" role="tablist"><button id="tab-screen" class="tab active" role="tab" aria-selected="true">窗口预览</button><button id="tab-elements" class="tab" role="tab" aria-selected="false">控件列表 <span id="element-count">0</span></button></div><span id="window-title" class="subtle">尚未选择窗口</span></div>
+          <div id="screen-panel" class="screen-panel"><div id="empty" class="empty"><div class="empty-icon">▣</div><h3>从一个窗口开始</h3><p>选择目标窗口，点击“查看窗口和控件”。<br>这里会显示助手看到的画面。</p></div><img id="screenshot" alt="所选窗口的最新截图" hidden></div>
+          <div id="elements-panel" class="elements-panel" hidden><p class="hint">控件 ID 只对当前这一次观察有效。</p><div id="elements"></div></div>
+          <div class="viewer-footer"><span><span class="tiny-dot"></span> <span id="observation-label">等待观察</span></span><span>截图不会自动写入磁盘</span></div>
+        </section>
+        <section class="card action-card"><div class="action-top"><div class="section-heading"><span class="number">03</span><h2>下一步，由你决定</h2></div><span id="status" class="status">准备就绪</span></div>
+          <p id="message">选择窗口，开始你的第一个任务。</p>
+          <div id="proposal" hidden><div class="proposal-heading"><span id="action-kind"></span><span id="step-label"></span></div><p id="reason"></p><dl id="action-details"></dl><p class="hint">批准前请核对目标窗口。若界面已改变，请停止并重新观察。</p><div class="approval-row"><button id="approve" class="primary">批准并执行这一步 →</button><button id="reject" class="secondary">拒绝并停止</button></div></div>
+        </section>
+        <details class="card history-card" open><summary>操作时间线 <span id="event-count">0</span></summary><ol id="events"><li class="no-events">任务开始后，这里会记录每一步。</li></ol></details>
+      </div>
+    </section>
+    <footer>LOCAL COMPUTER USE <span>开源 · 本地执行 · 逐步确认</span></footer>
+  </main>
+</body>
+</html>

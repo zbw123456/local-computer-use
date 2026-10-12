@@ -1,0 +1,11 @@
+.local/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.DS_Store
+native/.build/
+native/.swiftpm/
+*.log
+.venv/
